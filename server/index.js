@@ -15,36 +15,6 @@ app.get("/", (req, res) => {
   res.json({ status: "ok", message: "MeowCart API server is running" });
 });
 
-// API Test: get products list
-app.get("/api/products", async (req, res) => {
-  try {
-    const GET_PRODUCTS_QUERY = `
-      query GetProducts($first: Int!) {
-        products(first: $first) {
-          edges {
-            node {
-              id
-              title
-              totalInventory
-              status
-            }
-          }
-        }
-      }
-    `;
-    const variables = { first: 10 };
-    const data = await shopifyFetch(GET_PRODUCTS_QUERY, variables);
-
-    res.json({
-      success: true,
-      data: data.products.edges.map((edge) => edge.node),
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: error.message });
-  }
-});
-
 app.get("/api/productcount", async (req, res) => {
   try {
     const GET_PRODUCT_COUNT_QUERY = `
