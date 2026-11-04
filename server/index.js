@@ -21,7 +21,6 @@ app.get("/api/productcount", async (req, res) => {
       query GetProductCount {
         productsCount{
           count
-          precision
         }
       }
     `;
@@ -43,7 +42,6 @@ app.get("/api/activeproducts/count", async (req, res) => {
       query GetActiveProductCount {
         productsCount(query: "status:active") {
           count
-          precision
         }
       }
     `;
@@ -65,7 +63,6 @@ app.get("/api/draftproducts/count", async (req, res) => {
       query GetDraftProductCount {
         productsCount(query: "status:draft") {
           count
-          precision
         }
       }
     `;
@@ -101,7 +98,6 @@ app.get("/api/orders/last30days/count", async (req, res) => {
       query GetOrdersLast30DaysCount($query: String!) {
         ordersCount(query: $query) {
           count
-          precision
         }
       }
     `;
